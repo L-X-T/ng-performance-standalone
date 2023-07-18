@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('ng-performance-new', () => {
+describe('ng-performance', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,6 +8,6 @@ describe('ng-performance-new', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome ng-performance-new');
+    getGreeting().contains('Welcome ng-performance');
   });
 });

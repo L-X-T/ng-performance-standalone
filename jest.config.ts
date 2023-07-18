@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'ng-performance-new',
+  displayName: 'ng-performance',
   preset: './jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: './coverage/ng-performance-new',
+  coverageDirectory: './coverage/ng-performance',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

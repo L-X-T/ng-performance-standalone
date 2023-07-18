@@ -4,7 +4,8 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "parallel": 4
       }
     }
   },
@@ -20,11 +21,7 @@
       "inputs": ["default", "^production"]
     },
     "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore"
-      ]
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
     }
   },
   "namedInputs": {
@@ -51,8 +48,18 @@
       "unitTestRunner": "jest"
     },
     "@nx/angular:component": {
+      "changeDetection": "OnPush",
+      "standalone": true,
+      "style": "scss"
+    },
+    "@schematics/angular:component": {
+      "changeDetection": "OnPush",
+      "standalone": true,
       "style": "scss"
     }
   },
-  "defaultProject": "ng-performance-new"
+  "defaultProject": "ng-performance",
+  "cli": {
+    "packageManager": "npm"
+  }
 }

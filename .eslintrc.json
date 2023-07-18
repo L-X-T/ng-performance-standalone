@@ -1,37 +1,75 @@
 {
   "root": true,
-  "ignorePatterns": ["!**/*"],
-  "plugins": ["@nx"],
+  "ignorePatterns": ["dist/*", "node_modules/*"],
+  "plugins": ["@angular-eslint", "@nx", "@typescript-eslint", "prettier"],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": ["*.js", "*.jsx"],
+      "extends": ["eslint:recommended", "plugin:@nx/javascript", "plugin:prettier/recommended"],
+      "rules": {}
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
       "extends": [
-        "plugin:@nx/typescript",
+        "eslint:recommended",
+        "plugin:@angular-eslint/recommended",
         "plugin:@nx/angular",
-        "plugin:@angular-eslint/template/process-inline-templates"
+        "plugin:@nx/typescript",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended"
       ],
       "rules": {
-        "@angular-eslint/directive-selector": [
-          "error",
-          {
-            "type": "attribute",
-            "prefix": "ngPerformanceNew",
-            "style": "camelCase"
-          }
-        ],
         "@angular-eslint/component-selector": [
           "error",
           {
             "type": "element",
-            "prefix": "ng-performance-new",
+            "prefix": "app",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "app",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/no-empty-lifecycle-method": "warn",
+        "@angular-eslint/prefer-on-push-component-change-detection": "off",
+        "@typescript-eslint/naming-convention": [
+          "warn",
+          {
+            "selector": "variable",
+            "format": ["camelCase", "UPPER_CASE", "PascalCase"]
+          }
+        ],
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/no-empty-interface": "warn",
+        "@typescript-eslint/no-explicit-any": "warn",
+        "@typescript-eslint/no-unused-vars": "off",
+        "max-len": [
+          "warn",
+          {
+            "code": 120,
+            "comments": 140
+          }
+        ],
+        "no-console": "off",
+        "no-restricted-syntax": "off"
       }
     },
     {
+      "files": ["*.spec.ts", "*.spec.js"],
+      "env": {
+        "jest": true
+      },
+      "rules": {}
+    },
+    {
       "files": ["*.html"],
-      "extends": ["plugin:@nx/angular-template"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     }
   ]

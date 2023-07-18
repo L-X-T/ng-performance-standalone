@@ -1,0 +1,31 @@
+{
+  "version": "0.0.0",
+  "configurations": [
+    // Based on: https://github.com/microsoft/vscode-recipes/tree/master/Angular-CLI
+    {
+      "name": "Debug in Chrome",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200/",
+
+      // Note: The project directory
+      "webRoot": "${workspaceFolder}",
+
+      "sourceMaps": true,
+      "sourceMapPathOverrides": {
+        "webpack:/*": "${webRoot}/*",
+        "/./*": "${webRoot}/*",
+        "/src/*": "${webRoot}/*",
+        "/*": "*",
+        "/./~/*": "${webRoot}/node_modules/*"
+      }
+    },
+    {
+      "name": "Run unit tests",
+      "type": "node",
+      "request": "launch",
+      "preLaunchTask": "npm: test"
+    }
+  ]
+}
