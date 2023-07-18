@@ -1,0 +1,26 @@
+<div class="card" [class.selected]="isSelected">
+  <div class="card-header">
+    <h2 class="title">{{ item.from | city: 'short' }} - {{ item.to | city: 'short' }}</h2>
+  </div>
+
+  <div class="card-body">
+    <p>
+      Flight-No.: #{{ item.id }}
+      @if (item.delayed) {
+        <span> (delayed)</span>
+      }
+    </p>
+    <p [class.delayed]="item.delayed">Date: {{ getDate(item) }}</p>
+    <p>
+      @if (!isSelected) {
+        <button class="btn btn-default" (click)="select()">Add</button>
+      } @else {
+        <button class="btn btn-default" (click)="deselect()">Rem.</button>
+      }
+      <button class="btn btn-default" style="margin-left: 10px" (click)="edit.emit()">Edit</button>
+      <ng-content></ng-content>
+    </p>
+  </div>
+</div>
+
+<!--{{ blink() }}-->
