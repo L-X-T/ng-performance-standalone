@@ -10,7 +10,7 @@
         <span> (delayed)</span>
       }
     </p>
-    <p [class.delayed]="item.delayed">Date: {{ getDate(item) }}</p>
+    <p [class.delayed]="item.delayed">Date: {{ item.date | date: 'MM.dd.YYYY HH:mm' }}</p>
     <p>
       @if (!isSelected) {
         <button class="btn btn-default" (click)="select()">Add</button>

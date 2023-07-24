@@ -10,8 +10,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-
-import * as moment from 'moment';
+import { DatePipe } from '@angular/common';
 
 import { Flight } from '../../entities/flight';
 import { CityPipe } from '../../pipes/city.pipe';
@@ -20,7 +19,7 @@ import { BlinkService } from '../../shared/blink.service';
 @Component({
   selector: 'app-flight-card',
   standalone: true,
-  imports: [CityPipe],
+  imports: [CityPipe, DatePipe],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.scss'],
   // changeDetection: ChangeDetectionStrategy.OnPush,
@@ -72,10 +71,6 @@ export class FlightCardComponent implements OnInit, OnChanges {
       console.log('isSelected: ' + false);
     }
     this.isSelectedChange.emit(false);
-  }
-
-  getDate(item: Flight): string {
-    return moment(item.date).format('MM.DD.YYYY HH:mm');
   }
 
   blink(): void {
