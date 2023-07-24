@@ -1,7 +1,6 @@
 import { Route } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
-import { ChartsComponent } from './charts/charts.component';
 
 export const appRoutes: Route[] = [
   {
@@ -23,7 +22,8 @@ export const appRoutes: Route[] = [
 
   {
     path: 'charts',
-    component: ChartsComponent,
+    // component: ChartsComponent,
+    loadComponent: () => import('./charts/charts.component').then((c) => c.ChartsComponent),
   },
 
   /*{
