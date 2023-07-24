@@ -3,13 +3,20 @@
 </div>
 
 <div class="container">
-  <div class="row">
-    @for (chart of charts; track chart) {
-      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-        <app-chart [id]="chart.id" [data]="chart.data" />
+  <cdk-virtual-scroll-viewport itemSize="264" class="viewport">
+    <div *cdkVirtualFor="let chart of charts; let index = index" [id]="'chart_' + index" class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <app-chart [id]="chart.col1.id" [data]="chart.col1?.data"></app-chart>
       </div>
-    } @empty {
-      No charts found.
-    }
-  </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <app-chart [id]="chart.col2.id" [data]="chart.col2?.data"></app-chart>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <app-chart [id]="chart.col3.id" [data]="chart.col3?.data"></app-chart>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+        <app-chart [id]="chart.col4.id" [data]="chart.col4?.data"></app-chart>
+      </div>
+    </div>
+  </cdk-virtual-scroll-viewport>
 </div>

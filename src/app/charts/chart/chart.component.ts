@@ -1,7 +1,7 @@
 import {
   AfterViewInit,
   ChangeDetectorRef,
-  // ChangeDetectionStrategy,
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   inject,
@@ -22,7 +22,7 @@ import 'anychart';
   standalone: true,
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() id = 0;

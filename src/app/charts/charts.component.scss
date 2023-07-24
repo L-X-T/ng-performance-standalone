@@ -1,0 +1,8 @@
+.viewport {
+  height: calc(100vh - 222px);
+}
+
+.cdk-virtual-scroll-content-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
