@@ -1,7 +1,7 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideImageKitLoader } from '@angular/common';
-import { provideRouter } from '@angular/router';
+import { PreloadAllModules, provideRouter, withPreloading } from '@angular/router';
 
 import { appRoutes } from './app.routes';
 
@@ -13,6 +13,7 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       // withDebugTracing(),
       // withEnabledBlockingInitialNavigation()
+      withPreloading(PreloadAllModules),
     ),
   ],
 };
