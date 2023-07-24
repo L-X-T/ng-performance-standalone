@@ -1,7 +1,7 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideHttpClient } from '@angular/common/http';
 import { provideImageKitLoader } from '@angular/common';
-import { provideRouter, withPreloading } from '@angular/router';
+import { NoPreloading, provideRouter, withPreloading } from '@angular/router';
 
 import { quicklinkProviders, QuicklinkStrategy } from 'ngx-quicklink';
 
@@ -15,8 +15,8 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       // withDebugTracing(),
       // withEnabledBlockingInitialNavigation()
-      withPreloading(QuicklinkStrategy),
+      withPreloading(NoPreloading),
     ),
-    quicklinkProviders,
+    // quicklinkProviders,
   ],
 };
