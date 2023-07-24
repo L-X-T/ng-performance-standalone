@@ -143,7 +143,15 @@
     "prerender": {
       "executor": "@angular-devkit/build-angular:prerender",
       "options": {
-        "routes": ["/"]
+        "routes": [
+          "/home",
+          "/flights/flight-search",
+          "/flights/flight-edit/1",
+          "/flights/flight-edit/2",
+          "/flights/flight-edit/3",
+          "/flights/flight-edit/4",
+          "/flights/flight-edit/5"
+        ]
       },
       "configurations": {
         "production": {
