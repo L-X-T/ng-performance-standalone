@@ -42,13 +42,18 @@
     @if (flights.length > 0) {
       <button class="btn btn-default" style="margin-left: 10px" (click)="onDelayFirstFlight()">Delay 1st Flight</button>
     }
+    @if (flights.length > 1) {
+      <button class="btn btn-default" style="margin-left: 10px" (click)="onRemoveSecondFlight()">
+        Remove 2nd Flight
+      </button>
+    }
   </div>
 </form>
 
 <div class="container">
   <h3 class="title">Flights with Subscription</h3>
   <div class="row">
-    @for (flight of flights; track flight) {
+    @for (flight of flights; track identifyFlightById(flight)) {
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
         <app-flight-card [item]="flight" [(isSelected)]="basket[flight.id]" (edit)="onEdit(flight.id)">
           <app-flight-status-toggle style="margin-left: 10px" [(status)]="flight.delayed" />
@@ -64,7 +69,7 @@
   <div class="container">
     <h3 class="title">Flights with Async Pipe</h3>
     <div class="row">
-      @for (flight of asyncFlights; track flight) {
+      @for (flight of asyncFlights; track identifyFlightById(flight)) {
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
           <app-flight-card [item]="flight" [(isSelected)]="basket[flight.id]" (edit)="onEdit(flight.id)">
             <app-flight-status-toggle style="margin-left: 10px" [(status)]="flight.delayed" />
