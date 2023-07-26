@@ -89,7 +89,7 @@ export class FlightSearchComponent implements OnInit {
       this.flights[0].date = flightDate.toISOString();
 
       // Immutable
-      // ?
+      this.flights[0] = { ...this.flights[0], date: flightDate.toISOString() };
     }
 
     // RxJS
