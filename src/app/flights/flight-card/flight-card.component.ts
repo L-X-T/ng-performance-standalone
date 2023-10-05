@@ -23,7 +23,7 @@ import { BlinkService } from '../../shared/blink.service';
   imports: [CityPipe],
   templateUrl: './flight-card.component.html',
   styleUrls: ['./flight-card.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightCardComponent implements OnInit, OnChanges {
   debug = !isDevMode();

@@ -6,7 +6,7 @@ import { BlinkService } from '../../shared/blink.service';
   selector: 'app-flight-status-toggle',
   standalone: true,
   templateUrl: './flight-status-toggle.component.html',
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FlightStatusToggleComponent {
   @Input() status = false;
