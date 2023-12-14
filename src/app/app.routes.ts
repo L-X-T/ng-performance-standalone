@@ -2,6 +2,7 @@ import { Route } from '@angular/router';
 
 import { HomeComponent } from './home/home.component';
 import { DynamicChartComponent } from './dynamic-chart/dynamic-chart.component';
+import { DeferredChartsComponent } from './deferred-charts/deferred-charts.component';
 
 export const appRoutes: Route[] = [
   {
@@ -30,6 +31,11 @@ export const appRoutes: Route[] = [
   {
     path: 'dynamic-chart',
     component: DynamicChartComponent,
+  },
+
+  {
+    path: 'deferred-charts',
+    component: DeferredChartsComponent,
   },
 
   /*{

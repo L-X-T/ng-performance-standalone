@@ -1,0 +1,47 @@
+<div class="header">
+  <h1>Deferred Charts</h1>
+</div>
+
+<div class="container">
+  <div class="row">
+    @for (chart of charts; track chart) {
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        @switch (chart.id % 4) {
+          @case (1) {
+            @defer (on immediate) {
+              <app-chart [id]="chart.id" [data]="chart.data" />
+            } @placeholder {
+              <p>Chart is loading immediately.</p>
+            }
+          }
+          @case (2) {
+            @defer (on viewport) {
+              <app-chart [id]="chart.id" [data]="chart.data" />
+            } @placeholder {
+              <p>Chart is loading on viewport.</p>
+            }
+          }
+          @case (3) {
+            @defer (on timer(4200ms)) {
+              <app-chart [id]="chart.id" [data]="chart.data" />
+            } @placeholder {
+              <p>Chart is loading in 4200ms.</p>
+            }
+          }
+          @case (0) {
+            @defer (on hover) {
+              <app-chart [id]="chart.id" [data]="chart.data" />
+            } @placeholder {
+              <p>Chart will load on hover.</p>
+            }
+          }
+          @default {
+            Impossible :-)
+          }
+        }
+      </div>
+    } @empty {
+      No charts found.
+    }
+  </div>
+</div>
