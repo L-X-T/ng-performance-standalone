@@ -20,7 +20,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/ng-performance",
+        "outputPath": "dist/ng-performance/browser",
         "index": "./src/index.html",
         "main": "./src/main.ts",
         "polyfills": ["zone.js"],
@@ -102,6 +102,60 @@
       "options": {
         "buildTarget": "ng-performance:build"
       }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/ng-performance/server",
+        "main": "server.ts",
+        "tsConfig": "tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "vendorChunk": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@angular-devkit/build-angular:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "ng-performance:build:development",
+          "serverTarget": "ng-performance:server:development"
+        },
+        "production": {
+          "browserTarget": "ng-performance:build:production",
+          "serverTarget": "ng-performance:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "prerender": {
+      "executor": "@angular-devkit/build-angular:prerender",
+      "options": {
+        "routes": ["/"]
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "ng-performance:build:production",
+          "serverTarget": "ng-performance:server:production"
+        },
+        "development": {
+          "browserTarget": "ng-performance:build:development",
+          "serverTarget": "ng-performance:server:development"
+        }
+      },
+      "defaultConfiguration": "production"
     }
   }
 }
