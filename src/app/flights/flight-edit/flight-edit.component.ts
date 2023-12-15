@@ -27,12 +27,7 @@ export class FlightEditComponent implements OnChanges {
 
   private readonly DEBOUNCE_MS = 250;
   private readonly DELAY_MS = 3_000;
-  private readonly destroyRef = inject(DestroyRef);
-  private readonly fb = inject(FormBuilder);
   private readonly flightService = inject(FlightService);
-  private readonly route = inject(ActivatedRoute);
-  private readonly router = inject(Router);
-
   private readonly flightSubscription = inject(ActivatedRoute)
     .params.pipe(
       tap((params: Params) => (this.id = params['id'])),
@@ -71,7 +66,7 @@ export class FlightEditComponent implements OnChanges {
 
     this.flightService
       .save(flightToSave)
-      .pipe(delay(this.DELAY_MS), takeUntilDestroyed(this.destroyRef))
+      .pipe(delay(this.DELAY_MS), takeUntilDestroyed(inject(DestroyRef)))
       .subscribe({
         next: (flight) => {
           // console.warn('FlightEditComponent - onSave()');
@@ -80,7 +75,7 @@ export class FlightEditComponent implements OnChanges {
           this.patchFormValue();
           this.message = 'Success saving! Navigating ...';
 
-          setTimeout(() => this.router.navigate(['/flights/flight-search']), this.DELAY_MS);
+          setTimeout(() => inject(Router).navigate(['/flights/flight-search']), this.DELAY_MS);
         },
         error: (errResponse) => {
           console.error(errResponse);
@@ -90,7 +85,7 @@ export class FlightEditComponent implements OnChanges {
   }
 
   private setupEditForm() {
-    this.editForm = this.fb.group({
+    this.editForm = inject(FormBuilder).group({
       id: [0, Validators.required],
       from: [
         '',
