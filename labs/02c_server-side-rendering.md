@@ -14,7 +14,7 @@ In this lab we will further improve the initial load of our `ng-performance` app
 To begin with, we need to add Angular Universal to our app:
 
 ```
-nx add @nguniversal/express-engine
+nx add @angular/ssr
 ```
 
 Nx will tell you that it doesn't like `nx add`. However, it will still work once you entered a `y` for yes!

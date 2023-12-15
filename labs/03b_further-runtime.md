@@ -36,6 +36,14 @@ When you resubmit the same search, you will find out that `@for` will repaint al
 
 Try resubmitting the same search again and interpret your findings.
 
+**Please note**: With the new control flow syntax live got really easy.
+
+In our example, all you really have to do now is this:
+
+```html
+@for (flight of flights; track flight.id) [...]
+```
+
 ## Using Virtual Scrolling
 
 1. To be able to use the Virtual Scrolling we need to install `@angular/cdk` first:
