@@ -33,6 +33,7 @@ export class FlightEditComponent implements OnChanges {
       tap((params: Params) => (this.id = params['id'])),
       tap((params: Params) => (this.showDetails = params['showDetails'])),
       switchMap((params: Params) => this.flightService.findById(params['id'])),
+      delay(this.DELAY_MS),
       takeUntilDestroyed(),
     )
     .subscribe({

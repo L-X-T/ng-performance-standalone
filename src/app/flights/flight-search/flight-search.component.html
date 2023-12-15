@@ -51,10 +51,14 @@
 <div class="container">
   <h3 class="title">Flights with Subscription</h3>
   <div class="row">
-    @for (flight of flights; track identifyFlightById(flight)) {
+    @for (flight of flights; track flight.id) {
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-        <app-flight-card [item]="flight" [(isSelected)]="basket[flight.id]" (edit)="onEdit(flight.id)">
-          <app-flight-status-toggle style="margin-left: 10px" [(status)]="flight.delayed" />
+        <app-flight-card [item]="flight" [isSelected]="basket[flight.id]">
+          <button class="btn btn-default" (click)="basket[flight.id] = !basket[flight.id]">
+            {{ basket[flight.id] ? 'Rem.' : 'Add' }}
+          </button>
+          <button class="btn btn-default" (click)="onEdit(flight.id)">Edit</button>
+          <app-flight-status-toggle [(status)]="flight.delayed" />
         </app-flight-card>
       </div>
     } @empty {
